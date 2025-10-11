@@ -6,7 +6,9 @@ int main()
     cin.tie(nullptr);
     ios_base::sync_with_stdio(false);
 
-    cout << "Hello, World!";
+    int A, B;
+    cin >> A >> B;
+    cout << A + B;
 
     return 0;
 }

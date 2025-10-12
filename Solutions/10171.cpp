@@ -1,3 +1,4 @@
+/*문자열을 출력 할 때 \는 \\로, '는 \'로, "는 \"로 출력을 해야한다.*/
 #include <iostream>
 using namespace std;
 

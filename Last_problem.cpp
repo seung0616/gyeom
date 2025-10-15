@@ -9,17 +9,17 @@ int main()
 
   int time[26] = {3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10};
 
-  string a;
-  cin >> a;
+  string s;
+  cin >> s;
 
   int result = 0;
 
-  for (int i = 0; i < a.length(); i++)
+  for (int i = 0; i < s.length(); i++)
   {
-    result += time[a[i] - 'A']; 
+    result += time[s[i] - 'A']; 
   }
 
   cout << result;
-  
+
   return 0;
 }

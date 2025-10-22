@@ -1,3 +1,5 @@
+/*체스판은 왼쪽위가 흰색인 체스판과 왼쪽 위가 검정색인 체스판 두가지 밖에 없다.
+  왼쪽위가 흰색일때는 몇개를 바꿔야하는지 검은색일때는 몇개를 바꿔야 하는지 센 후에 최솟값을 구한다.*/
 #include <iostream>
 #include <vector>
 using namespace std;

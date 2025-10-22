@@ -1,5 +1,3 @@
-/*동적계획법을 이용함
-  무게가 i일때는 i-3일 때 최소 개수 + 1 또는 i - 5일 때 최소 개수 + 1이다.*/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -22,7 +20,7 @@ int main()
     d[i] = min(d[i - 3] + 1, d[i - 5] + 1);
   }
 
-  if(d[N] >= 5001) cout << -1;
+  if(d[N] == 5001) cout << -1;
   else cout << d[N];
 
   return 0;

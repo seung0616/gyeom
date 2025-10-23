@@ -1,19 +1,40 @@
 #include <iostream>
-#include <string>
+#include <vector>
 #include <algorithm>
 using namespace std;
+
+struct Node
+{
+  int x, y;
+};
+
+bool compare(Node a, Node b)
+{
+  if(a.x == b.x) return a.y < b.y;
+  else return a.x < b.x;
+}
 
 int main() 
 {
   cin.tie(nullptr);
   ios_base::sync_with_stdio(false);
 
-  string s;
-  cin >> s;
+  int N;
+  cin >> N;
 
-  sort(s.begin(), s.end(), greater<char>());
+  vector<Node> nodes(N);
 
-  cout << s;
+  for(int i = 0; i < N; i++)
+  {
+    cin >> nodes[i].x >> nodes[i].y;
+  }
+
+  sort(nodes.begin(), nodes.end(), compare);
+
+  for(int i = 0; i < N; i++)
+  {
+    cout << nodes[i].x << ' ' << nodes[i].y << '\n';
+  }
 
   return 0;
 }

@@ -1,3 +1,4 @@
+/*함수에 매개변수로 수정이 필요없는 컨테이너를 넘길때는 const &로 넘기기*/
 #include <iostream>
 #include <vector>
 #include <algorithm>

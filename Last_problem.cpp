@@ -1,47 +1,47 @@
-/*lower_bound와 upper_bound는 이진탐색을 이용한다.
-  cards를 정렬 한 후에 이진탐색을 두번 해서 target이 있는 범위의 시작과 끝을 구해서 
-  target의 개수를 구한다.*/
 #include <iostream>
+#include <string>
 #include <vector>
 #include <algorithm>
+#include <unordered_set>
 using namespace std;
+
 int main() 
 {
   cin.tie(nullptr);
   ios_base::sync_with_stdio(false);
 
-  int N;
-  cin >> N;
+  int N, M;
+  cin >> N >> M;
 
-  vector<int> cards;
+  unordered_set<string> neverHeards;
+  vector<string> unknowns;
 
   for(int i = 0; i < N; i++)
   {
-    int n;
-    cin >> n;
+    string name;
+    cin >> name;
 
-    cards.push_back(n);
+    neverHeards.insert(name);
   }
-
-  sort(cards.begin(), cards.end());
-
-  int M;
-  cin >> M;
-
-  vector<int> targets;
 
   for(int i = 0; i < M; i++)
   {
-    int n;
-    cin >> n;
-    
-    targets.push_back(n);
+    string name;
+    cin >> name;
+
+    if(neverHeards.count(name))
+    {
+      unknowns.push_back(name);
+    }
   }
 
-  for(int target : targets)
+  sort(unknowns.begin(), unknowns.end());
+
+  cout << unknowns.size() << '\n';
+
+  for(string unknown : unknowns)
   {
-    int cnt = upper_bound(cards.begin(), cards.end(), target) - lower_bound(cards.begin(), cards.end(), target);
-    cout << cnt << ' ';
+    cout << unknown << '\n';
   }
 
   return 0;

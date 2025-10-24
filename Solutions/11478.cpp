@@ -17,7 +17,7 @@ int main()
   {
     for(int j = 0; j < S.length() - i; j++)
     {
-      string s = S.substr(j, i + 1);
+      string s = s.substr(j, i + 1);
       strs.insert(s);
     }
   }

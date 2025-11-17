@@ -1,71 +1,22 @@
 #include <iostream>
-#include <vector>
+#include <string>
+#include <cmath>
 using namespace std;
 
-vector<int> sorted;
-int K;
-int cnt = 0;
-
-void merge(vector<int>& v, int start, int middle, int end)
+void del(string& s, int m, int n)
 {
-  if(start > end) return;
+  if(n - m < 2) return;
 
-  int i = start;
-  int j = middle + 1;
-  int k = start;
+  int len = n - m + 1;
+  int a = len / 3;
 
-  while(i <= middle && j <= end)
+  for(int i = m + a; i < m + 2 * a; i++)
   {
-    if(v[i] <= v[j]) 
-    {
-      sorted[k] = v[i];
-      i++;
-    }
-    else
-    {
-      sorted[k] = v[j];
-      j++;
-    }
-
-    k++;
+    s[i] = ' ';
   }
 
-  if(i > middle)
-  {
-    for(int x = j; x <= end; x++)
-    {
-      sorted[k] = v[x];
-      k++;
-    }
-  }
-  else if(j > end)
-  {
-    for(int x = i; x <= middle; x++)
-    {
-      sorted[k] = v[x];
-      k++;
-    }
-  }
-
-  for(int x = start; x <= end; x++)
-  {
-    v[x] = sorted[x];
-
-    cnt++;
-    if(cnt == K) cout << sorted[x];
-  }
-}
-
-void mergeSort(vector<int>& v, int start, int end)
-{
-  if(start < end)
-  {
-    int middle = (start + end) / 2;
-
-    mergeSort(v, start, middle);
-    mergeSort(v, middle + 1, end);
-    merge(v, start, middle, end);
-  }
+  del(s, m, m + a - 1);
+  del(s, m + 2 * a, n);
 }
 
 int main() 
@@ -73,20 +24,15 @@ int main()
   cin.tie(nullptr);
   ios_base::sync_with_stdio(false);
 
-  int N, K;
-  cin >> N >> K;
+  int n;
 
-  vector<int> v(N);
-  sorted.resize(N);
-
-  for(int i = 0; i < N; i++)
+  while(cin >> n)
   {
-    cin >> v[i];
+    string s(pow(3, n), '-');
+    del(s, 0, s.length() - 1);
+
+    cout << s << '\n';
   }
-
-  mergeSort(v, 0, N - 1);
-
-  if(cnt < K) cout << -1;
 
   return 0;
 }

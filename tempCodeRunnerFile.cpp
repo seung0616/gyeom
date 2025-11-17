@@ -5,7 +5,6 @@ using namespace std;
 vector<int> sorted;
 int K;
 int cnt = 0;
-int result = -1;
 
 void merge(vector<int>& v, int start, int middle, int end)
 {
@@ -21,55 +20,39 @@ void merge(vector<int>& v, int start, int middle, int end)
     {
       sorted[k] = v[i];
       i++;
-      k++;
     }
     else
     {
       sorted[k] = v[j];
       j++;
+    }
+
+    k++;
+  }
+
+  if(i > middle)
+  {
+    for(int x = j; x <= end; x++)
+    {
+      sorted[k] = v[x];
       k++;
     }
-
-    cnt++;
-
-    if(cnt == K)
-    {
-      result = sorted[k - 1];
-    }
   }
-
-  while(j <= end)
+  else if(j > end)
   {
-    sorted[k] = v[j];
-    k++;
-    j++;
-
-    cnt++;
-
-    if(cnt == K)
+    for(int x = i; x <= middle; x++)
     {
-       result = sorted[k - 1];
+      sorted[k] = v[x];
+      k++;
     }
   }
-
-  while(i <= middle)
-  {
-    sorted[k] = v[i];
-    k++;
-    i++;
-    
-    cnt++;
-
-    if(cnt == K)
-    {
-       result = sorted[k - 1];
-    }
-  }
-
 
   for(int x = start; x <= end; x++)
   {
     v[x] = sorted[x];
+
+    cnt++;
+    if(cnt == K) cout << sorted[x];
   }
 }
 
@@ -90,7 +73,7 @@ int main()
   cin.tie(nullptr);
   ios_base::sync_with_stdio(false);
 
-  int N;
+  int N, K;
   cin >> N >> K;
 
   vector<int> v(N);
@@ -103,7 +86,7 @@ int main()
 
   mergeSort(v, 0, N - 1);
 
-  cout << result;
+  if(cnt < K) cout << -1;
 
   return 0;
 }

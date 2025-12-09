@@ -13,7 +13,7 @@ int mn = 9999999;
 int teamStartAbility = 0;
 int teamLinkAbility = 0;
 
-void getAbility(int level, int cur, int k)
+void getAbility(int level, int cur, int k) //팀에서 2명씩 뽑아서 능력치를 더해준다
 {
   if(level == 2)
   {
@@ -45,7 +45,7 @@ void getAbility(int level, int cur, int k)
   }
 }
 
-void makeTeam(int level, int cur)
+void makeTeam(int level, int cur) //팀을 뽑는다
 {
   if(level == N / 2)
   {
